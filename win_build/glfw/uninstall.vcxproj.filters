@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Tejas M R\Code\cpp\tezz\build\CMakeFiles\1d0a639712ff06457883e43bd3d11fe0\uninstall.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Tejas M R\Code\cpp\tezz\glfw\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Tejas M R\Code\cpp\tezz\build\glfw\CMakeFiles\uninstall" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{0EAE2CAA-87D8-32A1-B86D-A51903DF5E3A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
