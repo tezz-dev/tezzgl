@@ -1,8 +1,8 @@
 CMakeFiles/app.dir/src/Main.cpp.o: \
-  /Users/tezz/Developer/NewTezzGL/src/Main.cpp \
-  /Users/tezz/Developer/NewTezzGL/include/TezzGL.h \
-  /Users/tezz/Developer/NewTezzGL/include/Artist.h \
-  /Users/tezz/Developer/NewTezzGL/glfw/include/GLFW/glfw3.h \
+  /Users/tezz/Developer/TezzGL/src/Main.cpp \
+  /Users/tezz/Developer/TezzGL/include/TezzGL.h \
+  /Users/tezz/Developer/TezzGL/include/Artist.h \
+  /Users/tezz/Developer/TezzGL/glfw/include/GLFW/glfw3.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stddef.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/pthread.h \
@@ -42,9 +42,9 @@ CMakeFiles/app.dir/src/Main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/os/availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/AvailabilityInternal.h \
-  /Users/tezz/Developer/NewTezzGL/include/Point2.h \
-  /Users/tezz/Developer/NewTezzGL/include/Grid.h \
-  /Users/tezz/Developer/NewTezzGL/include/Timer.h \
+  /Users/tezz/Developer/TezzGL/include/Point2.h \
+  /Users/tezz/Developer/TezzGL/include/Grid.h \
+  /Users/tezz/Developer/TezzGL/include/Timer.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/functional \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/type_traits \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cstddef \
@@ -138,7 +138,7 @@ CMakeFiles/app.dir/src/Main.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/atomic \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cassert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/assert.h \
-  /Users/tezz/Developer/NewTezzGL/include/Window.h \
+  /Users/tezz/Developer/TezzGL/include/Window.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/ios \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__locale \

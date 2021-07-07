@@ -53,10 +53,10 @@ RM = /usr/local/Cellar/cmake/3.20.5/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/tezz/Developer/NewTezzGL
+CMAKE_SOURCE_DIR = /Users/tezz/Developer/TezzGL
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/tezz/Developer/NewTezzGL/mac_build
+CMAKE_BINARY_DIR = /Users/tezz/Developer/TezzGL/mac_build
 
 # Utility rule file for uninstall.
 
@@ -67,7 +67,7 @@ include glfw/CMakeFiles/uninstall.dir/compiler_depend.make
 include glfw/CMakeFiles/uninstall.dir/progress.make
 
 glfw/CMakeFiles/uninstall:
-	cd /Users/tezz/Developer/NewTezzGL/mac_build/glfw && /usr/local/Cellar/cmake/3.20.5/bin/cmake -P /Users/tezz/Developer/NewTezzGL/mac_build/glfw/cmake_uninstall.cmake
+	cd /Users/tezz/Developer/TezzGL/mac_build/glfw && /usr/local/Cellar/cmake/3.20.5/bin/cmake -P /Users/tezz/Developer/TezzGL/mac_build/glfw/cmake_uninstall.cmake
 
 uninstall: glfw/CMakeFiles/uninstall
 uninstall: glfw/CMakeFiles/uninstall.dir/build.make
@@ -78,10 +78,10 @@ glfw/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : glfw/CMakeFiles/uninstall.dir/build
 
 glfw/CMakeFiles/uninstall.dir/clean:
-	cd /Users/tezz/Developer/NewTezzGL/mac_build/glfw && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
+	cd /Users/tezz/Developer/TezzGL/mac_build/glfw && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
 .PHONY : glfw/CMakeFiles/uninstall.dir/clean
 
 glfw/CMakeFiles/uninstall.dir/depend:
-	cd /Users/tezz/Developer/NewTezzGL/mac_build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/tezz/Developer/NewTezzGL /Users/tezz/Developer/NewTezzGL/glfw /Users/tezz/Developer/NewTezzGL/mac_build /Users/tezz/Developer/NewTezzGL/mac_build/glfw /Users/tezz/Developer/NewTezzGL/mac_build/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/tezz/Developer/TezzGL/mac_build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/tezz/Developer/TezzGL /Users/tezz/Developer/TezzGL/glfw /Users/tezz/Developer/TezzGL/mac_build /Users/tezz/Developer/TezzGL/mac_build/glfw /Users/tezz/Developer/TezzGL/mac_build/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : glfw/CMakeFiles/uninstall.dir/depend
 

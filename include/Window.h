@@ -106,13 +106,13 @@ void Window::Init() {
 void Window::StartRendering() {
     glClear(GL_COLOR_BUFFER_BIT);
 
-    glfwSetWindowSizeLimits(
+    /*glfwSetWindowSizeLimits(
             window,
             size.width,
             size.height,
             -1,
             -1
-    );
+    );*/
 }
 
 void Window::Resize() {

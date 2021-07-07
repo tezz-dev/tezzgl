@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "/Users/tezz/Developer/NewTezzGL/mac_build/glfw/install_manifest.txt")
-  message(FATAL_ERROR "Cannot find install manifest: \"/Users/tezz/Developer/NewTezzGL/mac_build/glfw/install_manifest.txt\"")
+if (NOT EXISTS "/Users/tezz/Developer/TezzGL/mac_build/glfw/install_manifest.txt")
+  message(FATAL_ERROR "Cannot find install manifest: \"/Users/tezz/Developer/TezzGL/mac_build/glfw/install_manifest.txt\"")
 endif()
 
-file(READ "/Users/tezz/Developer/NewTezzGL/mac_build/glfw/install_manifest.txt" files)
+file(READ "/Users/tezz/Developer/TezzGL/mac_build/glfw/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

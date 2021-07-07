@@ -1,2 +1,4 @@
 cmake -S . -B ./mac_build
-make ./mac_build
+cd ./mac_build
+make
+cd ..
