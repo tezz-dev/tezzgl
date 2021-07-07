@@ -5,39 +5,16 @@
 
 #include "Point2.h"
 #include "Grid.h"
-
-#ifndef Point2f
-    #define Point2f Point2<float>
-#endif
-
-#ifndef Point2d
-    #define Point2d Point2<int>
-#endif
-
-#ifndef Offset
-    #define Offset Point2<float>
-#endif
-
-#ifndef Size
-    #define Size Point2<int>
-#endif
-
-#ifndef width
-    #define width x
-#endif
-
-#ifndef height
-    #define height y
-#endif
+#include "Definitions.h"
 
 class Artist {
 public:
     static void UseColor( float, float, float );
     static void DrawGrid( Offset, Grid, Size );
-    static void DrawRect( 
-        Point2f, 
-        Point2f, 
-        Offset = {0.0, 0.0}, 
+    static void DrawRect(
+        Point2f,
+        Point2f,
+        Offset = {0.0, 0.0},
         Size = {1, 1}
     );
 };
@@ -75,7 +52,7 @@ void Artist::DrawGrid( Offset offset, Grid grid, Size size ) {
 }
 
 void Artist::DrawRect( Point2f p1, Point2f p2, Offset offset, Size size ) {
-    glRectd( 
+    glRectd(
         offset.x + p1.x * size.width,
         offset.y + p1.x * size.height,
         offset.x + p2.x * size.width,

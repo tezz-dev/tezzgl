@@ -5,18 +5,7 @@
 
 #include "Point2.h"
 #include "Grid.h"
-
-#ifndef String
-    #define String const char*
-#endif
-
-#ifndef Monitor
-    #define Monitor GLFWmonitor*
-#endif
-
-#ifndef ShareWindow
-    #define ShareWindow GLFWwindow*
-#endif
+#include "Definitions.h"
 
 class Window {
 private:
@@ -44,8 +33,22 @@ public:
     void StartRendering();
     void Resize();
     void Setup() const;
-    void SetKeyMap( GLFWkeyfun );
     void EndRendering();
+
+    void SetKeyCallback( GLFWkeyfun );
+    // void SetPositionCallback( GLFWwindowposfun );
+    // void SetSizeCallback( GLFWwindowsizefun );
+    // void SetCloseCallback( GLFWwindowclosefun );
+    // void SetRefreshCallback( GLFWwindowrefreshfun );
+    // void SetFocusCallback( GLFWwindowfocusfun );
+    // void SetIconifyCallback( GLFWwindowiconifyfun );
+    // void SetMaximizeCallback( GLFWwindowmaximizefun );
+    // void SetFrameBufferSizeCallback( GLFWframebuffersizefun );
+    // void SetContentScaleCallback( GLFWwindowcontentscalefun );
+    //
+    // void SetDefaultHints();
+    // void SetHint( int, int );
+    // void SetHintString( int, String );
 
     bool ShouldClose();
     void SetWindowSizeLimits( Size = {-1, -1}, Size = {-1, -1});
@@ -138,7 +141,7 @@ void Window::Setup() const {
     );
 }
 
-void Window::SetKeyMap( GLFWkeyfun callback ) {
+void Window::SetKeyCallback( GLFWkeyfun callback ) {
     glfwSetKeyCallback( window, *callback );
 }
 

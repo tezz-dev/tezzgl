@@ -1,5 +1,5 @@
-#ifndef BASICCLANG_POINT2_H
-#define BASICCLANG_POINT2_H
+#ifndef TEZZGL_POINT2_H
+#define TEZZGL_POINT2_H
 
 template<typename T>
 class Point2 {
@@ -10,7 +10,7 @@ public:
 
     bool operator==( const Point2<T>& ) const;
     bool operator!=( const Point2<T>& ) const;
-    
+
     Point2<T> operator+( const Point2<T>& ) const;
     Point2<T> operator-( const Point2<T>& ) const;
 
