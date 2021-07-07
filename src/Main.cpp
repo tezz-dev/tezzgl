@@ -10,13 +10,13 @@ int main() {
         (float)window.GetSize().height / 20.0f
     );
     Offset offset(0, 0);
-    
+
     window.Init();
     while( !window.ShouldClose() ) {
         window.StartRendering();
         window.Setup();
         window.Resize();
-
+        window.SetWindowSizeLimits(window.GetSize(), Size(700, 700));
         Artist::DrawGrid( offset, grid, window.GetSize() );
         grid.size.width = (float)window.GetSize().width / 20.f;
         grid.size.height = (float)window.GetSize().height / 20.f;

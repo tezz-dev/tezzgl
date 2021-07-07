@@ -48,6 +48,7 @@ public:
     void EndRendering();
 
     bool ShouldClose();
+    void SetWindowSizeLimits( Size = {-1, -1}, Size = {-1, -1});
 
     static void Destroy();
 };
@@ -105,14 +106,6 @@ void Window::Init() {
 
 void Window::StartRendering() {
     glClear(GL_COLOR_BUFFER_BIT);
-
-    /*glfwSetWindowSizeLimits(
-            window,
-            size.width,
-            size.height,
-            -1,
-            -1
-    );*/
 }
 
 void Window::Resize() {
@@ -161,6 +154,16 @@ void Window::Destroy() {
 
 bool Window::ShouldClose() {
     return glfwWindowShouldClose( window );
+}
+
+void Window::SetWindowSizeLimits( Size minSize, Size maxSize) {
+  glfwSetWindowSizeLimits(
+          window,
+          minSize.width,
+          minSize.height,
+          maxSize.width,
+          maxSize.height
+  );
 }
 
 #endif
