@@ -6,12 +6,13 @@
 #include "Point2.h"
 #include "Grid.h"
 #include "Definitions.h"
+#include "Property.h"
 
 class Window {
 private:
     GLFWwindow* window;
     Size size;
-    String name;
+    String title;
     Monitor monitor;
     ShareWindow shareWindow;
 
@@ -21,7 +22,7 @@ public:
 
     GLFWwindow* GetWindow();
     Size GetSize();
-    String GetName();
+    String GetTitle();
     Monitor GetMonitor();
     ShareWindow GetShareWindow();
 
@@ -35,29 +36,14 @@ public:
     void Setup() const;
     void EndRendering();
 
-    void SetKeyCallback( GLFWkeyfun );
-    // void SetPositionCallback( GLFWwindowposfun );
-    // void SetSizeCallback( GLFWwindowsizefun );
-    // void SetCloseCallback( GLFWwindowclosefun );
-    // void SetRefreshCallback( GLFWwindowrefreshfun );
-    // void SetFocusCallback( GLFWwindowfocusfun );
-    // void SetIconifyCallback( GLFWwindowiconifyfun );
-    // void SetMaximizeCallback( GLFWwindowmaximizefun );
-    // void SetFrameBufferSizeCallback( GLFWframebuffersizefun );
-    // void SetContentScaleCallback( GLFWwindowcontentscalefun );
-    //
-    // void SetDefaultHints();
-    // void SetHint( int, int );
-    // void SetHintString( int, String );
-
     bool ShouldClose();
     void SetWindowSizeLimits( Size = {-1, -1}, Size = {-1, -1});
 
     static void Destroy();
 };
 
-Window::Window( String _name, int _width, int _height ):
-    name(_name),
+Window::Window( String _title, int _width, int _height ):
+    title(_title),
     size(_width, _height) {
 
     window = nullptr;
@@ -65,28 +51,24 @@ Window::Window( String _name, int _width, int _height ):
     shareWindow = nullptr;
 }
 
-Window::Window( String _name, Size _size ):
-    Window(_name, _size.x, _size.y) {}
+Window::Window( String _title, Size _size ):
+    Window(_title, _size.x, _size.y) {}
 
 GLFWwindow* Window::GetWindow() { return window; }
-
-Size Window::GetSize() { return size; }
-
-String Window::GetName() { return name; }
-
+Size Window::GetSize() {
+    glfwGetWindowSize(window, &size.x, &size.y);
+    return size;
+}
+String Window::GetTitle() { return title; }
 Monitor Window::GetMonitor() { return monitor; }
-
 ShareWindow Window::GetShareWindow() { return shareWindow; }
-
 void Window::SetSize( Size _size ) {
     size.x = _size.x;
     size.y = _size.y;
+    glfwSetWindowSize(window, size.x, size.y);
 }
-
 void Window::SetMonitor( Monitor _monitor ) { monitor = _monitor; }
-
 void Window::SetShareWindow( ShareWindow _shareWindow ) { shareWindow = _shareWindow; }
-
 void Window::Init() {
     if( !glfwInit() )
         return;
@@ -94,7 +76,7 @@ void Window::Init() {
     window = glfwCreateWindow(
         (int)size.width,
         (int)size.height,
-        name,
+        title,
         monitor,
         shareWindow
     );
@@ -106,11 +88,9 @@ void Window::Init() {
 
     glfwMakeContextCurrent( window );
 }
-
 void Window::StartRendering() {
     glClear(GL_COLOR_BUFFER_BIT);
 }
-
 void Window::Resize() {
     int _width, _height;
     glfwGetFramebufferSize (
@@ -123,7 +103,6 @@ void Window::Resize() {
 
     glViewport(0, 0, size.width, size.height);
 }
-
 void Window::Setup() const {
     glMatrixMode( GL_PROJECTION );
 
@@ -140,33 +119,42 @@ void Window::Setup() const {
             1
     );
 }
-
 void Window::SetKeyCallback( GLFWkeyfun callback ) {
     glfwSetKeyCallback( window, *callback );
 }
-
 void Window::EndRendering() {
     glfwSwapBuffers( window );
 
     glfwPollEvents();
 }
-
 void Window::Destroy() {
     glfwTerminate();
 }
-
 bool Window::ShouldClose() {
     return glfwWindowShouldClose( window );
 }
-
 void Window::SetWindowSizeLimits( Size minSize, Size maxSize) {
   glfwSetWindowSizeLimits(
-          window,
-          minSize.width,
-          minSize.height,
-          maxSize.width,
-          maxSize.height
+      window,
+      minSize.width,
+      minSize.height,
+      maxSize.width,
+      maxSize.height
   );
 }
 
 #endif
+
+/*
+GLFW_RESIZABLE
+GLFW_VISIBLE
+GLFW_DECORATED
+GLFW_FOCUSED
+GLFW_AUTO_ICONIFY
+GLFW_FLOATING
+GLFW_MAXIMIZED
+GLFW_CENTER_CURSOR
+GLFW_TRANSPARENT_FRAMEBUFFER
+GLFW_FOCUS_ON_SHOW
+GLFW_SCALE_TO_MONITOR
+*/
