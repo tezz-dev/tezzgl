@@ -47,6 +47,7 @@ CMakeFiles/app.dir/src/Main.cpp.o
  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/AvailabilityInternal.h
  /Users/tezz/Developer/TezzGL/include/Point2.h
  /Users/tezz/Developer/TezzGL/include/Grid.h
+ /Users/tezz/Developer/TezzGL/include/Definitions.h
  /Users/tezz/Developer/TezzGL/include/Timer.h
  /Library/Developer/CommandLineTools/usr/include/c++/v1/functional
  /Library/Developer/CommandLineTools/usr/include/c++/v1/type_traits
