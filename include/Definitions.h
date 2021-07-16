@@ -29,6 +29,10 @@
     #define Size Point2<int>
 #endif
 
+#ifndef Position
+    #define Position Point2<int>
+#endif
+
 #ifndef width
     #define width x
 #endif
