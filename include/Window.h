@@ -37,7 +37,7 @@ public:
     void EndRendering();
 
     bool ShouldClose();
-    void SetWindowSizeLimits( Size = {-1, -1}, Size = {-1, -1});
+    void SetWindowSizeLimits( Size = {-1, -1}, Size = {-1, -1} );
 
     static void Destroy();
 };
@@ -118,9 +118,6 @@ void Window::Setup() const {
             0,
             1
     );
-}
-void Window::SetKeyCallback( GLFWkeyfun callback ) {
-    glfwSetKeyCallback( window, *callback );
 }
 void Window::EndRendering() {
     glfwSwapBuffers( window );
