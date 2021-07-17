@@ -6,6 +6,8 @@ class Property {
 private:
     T value;
 public:
+    auto set = []( T value ) {};
+
     Property( T _value ) {
         value = _value;
     }
