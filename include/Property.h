@@ -13,6 +13,7 @@ public:
     }
 
     T& operator=( const T& _value ) {
+        set( value );
         value = _value;
     }
 
