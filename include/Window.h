@@ -11,24 +11,25 @@
 class Window {
 private:
     GLFWwindow* window;
-    Size size;
+
+public:
+    PSize size;
     String title;
     Monitor monitor;
     ShareWindow shareWindow;
 
-public:
     Window( String, int, int );
     Window( String, Size );
 
-    GLFWwindow* GetWindow();
-    Size GetSize();
-    String GetTitle();
-    Monitor GetMonitor();
-    ShareWindow GetShareWindow();
-
-    void SetSize( Size );
-    void SetMonitor( Monitor );
-    void SetShareWindow( ShareWindow );
+    // GLFWwindow* GetWindow();
+    // Size GetSize();
+    // String GetTitle();
+    // Monitor GetMonitor();
+    // ShareWindow GetShareWindow();
+    //
+    // void SetSize( Size );
+    // void SetMonitor( Monitor );
+    // void SetShareWindow( ShareWindow );
 
     void Init();
     void StartRendering();
@@ -44,42 +45,47 @@ public:
 
 Window::Window( String _title, int _width, int _height ):
     title(_title),
-    size(_width, _height) {
+    size({_width, _height}) {
 
     window = nullptr;
     monitor = nullptr;
     shareWindow = nullptr;
+    size.set = []( Size size, GLFWwindow* window ) {
+        glfwSetWindowSize(window, size.x, size.y);
+    };
 }
 
 Window::Window( String _title, Size _size ):
     Window(_title, _size.x, _size.y) {}
 
-GLFWwindow* Window::GetWindow() { return window; }
-Size Window::GetSize() {
-    glfwGetWindowSize(window, &size.x, &size.y);
-    return size;
-}
-String Window::GetTitle() { return title; }
-Monitor Window::GetMonitor() { return monitor; }
-ShareWindow Window::GetShareWindow() { return shareWindow; }
-void Window::SetSize( Size _size ) {
-    size.x = _size.x;
-    size.y = _size.y;
-    glfwSetWindowSize(window, size.x, size.y);
-}
-void Window::SetMonitor( Monitor _monitor ) { monitor = _monitor; }
-void Window::SetShareWindow( ShareWindow _shareWindow ) { shareWindow = _shareWindow; }
+// GLFWwindow* Window::GetWindow() { return window; }
+// Size Window::GetSize() {
+//     glfwGetWindowSize(window, &size.x, &size.y);
+//     return size;
+// }
+// String Window::GetTitle() { return title; }
+// Monitor Window::GetMonitor() { return monitor; }
+// ShareWindow Window::GetShareWindow() { return shareWindow; }
+// void Window::SetSize( Size _size ) {
+//     size.x = _size.x;
+//     size.y = _size.y;
+//     glfwSetWindowSize(window, size.x, size.y);
+// }
+// void Window::SetMonitor( Monitor _monitor ) { monitor = _monitor; }
+// void Window::SetShareWindow( ShareWindow _shareWindow ) { shareWindow = _shareWindow; }
 void Window::Init() {
     if( !glfwInit() )
         return;
 
     window = glfwCreateWindow(
-        (int)size.width,
-        (int)size.height,
+        (int)size().width,
+        (int)size().height,
         title,
         monitor,
         shareWindow
     );
+
+    size.setWindow( window );
 
     if( !window ) {
         glfwTerminate();
@@ -98,10 +104,10 @@ void Window::Resize() {
             &_width,
             &_height
     );
-    size.width = _width;
-    size.height = _height;
+    size->width = _width;
+    size->height = _height;
 
-    glViewport(0, 0, size.width, size.height);
+    glViewport(0, 0, size->width, size->height);
 }
 void Window::Setup() const {
     glMatrixMode( GL_PROJECTION );
@@ -112,8 +118,8 @@ void Window::Setup() const {
 
     glOrtho (
             0,
-            size.width,
-            size.height,
+            size().width,
+            size().height,
             0,
             0,
             1
