@@ -1,64 +1,26 @@
 #ifndef TEZZGL_DEFINITIONS_H
 #define TEZZGL_DEFINITIONS_H
 
-#ifndef String
-    #define String const char*
-#endif
+#define CreateTypeAlias(alias, type) using alias = type;
 
-#ifndef Monitor
-    #define Monitor GLFWmonitor*
-#endif
+CreateTypeAlias(    String,         ,   const char*                     );
+CreateTypeAlias(    width,          ,   x                               );
+CreateTypeAlias(    height,         ,   y                               );
+CreateTypeAlias(    RefreshRate     ,   int                             );
 
-#ifndef ShareWindow
-    #define ShareWindow GLFWwindow*
-#endif
+CreateTypeAlias(    ShareWindow     ,   GLFWwindow*                     );
+CreateTypeAlias(    Point2f         ,   Point2<float>                   );
+CreateTypeAlias(    Point2d         ,   Point2<int>                     );
+CreateTypeAlias(    Offset          ,   Point2<float>                   );
+CreateTypeAlias(    Size            ,   Point2<int>                     );
+CreateTypeAlias(    Position        ,   Point2<int>                     );
 
-#ifndef Point2f
-    #define Point2f Point2<float>
-#endif
-
-#ifndef Point2d
-    #define Point2d Point2<int>
-#endif
-
-#ifndef Offset
-    #define Offset Point2<float>
-#endif
-
-#ifndef Size
-    #define Size Point2<int>
-#endif
-
-#ifndef Position
-    #define Position Point2<int>
-#endif
-
-#ifndef PPoint2f
-    #define PPoint2f Property< Point2<float> >
-#endif
-
-#ifndef PPoint2d
-    #define PPoint2d Property< Point2<int> >
-#endif
-
-#ifndef POffset
-    #define POffset Property< Point2<float> >
-#endif
-
-#ifndef PSize
-    #define PSize Property< Point2<int> >
-#endif
-
-#ifndef PPosition
-    #define PPosition Property< Point2<int> >
-#endif
-
-#ifndef width
-    #define width x
-#endif
-
-#ifndef height
-    #define height y
-#endif
+CreateTypeAlias(    PMonitor        ,   Property<Monitor>               );
+CreateTypeAlias(    PShareWindow    ,   Property<ShareWindow>           );
+CreateTypeAlias(    PPoint2f        ,   Property<Point2f>               );
+CreateTypeAlias(    PPoint2d        ,   Property<Point2d>               );
+CreateTypeAlias(    POffset         ,   Property<Offset>                );
+CreateTypeAlias(    PSize           ,   Property<Size                   );
+CreateTypeAlias(    PPosition       ,   Property<Position               );
 
 #endif
