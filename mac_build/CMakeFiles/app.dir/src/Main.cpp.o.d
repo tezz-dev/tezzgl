@@ -140,6 +140,7 @@ CMakeFiles/app.dir/src/Main.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cassert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/assert.h \
   /Users/tezz/Developer/TezzGL/include/Window.h \
+  /Users/tezz/Developer/TezzGL/include/Property.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/ios \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__locale \

@@ -6,8 +6,8 @@ int main() {
     Grid grid(
         20,
         20,
-        (float)window.GetSize().width / 20.0f,
-        (float)window.GetSize().height / 20.0f
+        (float)window.size().width / 20.0f,
+        (float)window.size().height / 20.0f
     );
     Offset offset(0, 0);
 
@@ -16,10 +16,10 @@ int main() {
         window.StartRendering();
         window.Setup();
         window.Resize();
-        window.SetWindowSizeLimits(window.GetSize(), Size(700, 700));
-        Artist::DrawGrid( offset, grid, window.GetSize() );
-        grid.size.width = (float)window.GetSize().width / 20.f;
-        grid.size.height = (float)window.GetSize().height / 20.f;
+        window.SetWindowSizeLimits(window.size(), Size(700, 700));
+        Artist::DrawGrid( offset, grid, window.size() );
+        grid.size.width = (float)window.size().width / 20.f;
+        grid.size.height = (float)window.size().height / 20.f;
         window.EndRendering();
     }
 

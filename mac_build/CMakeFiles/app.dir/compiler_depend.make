@@ -142,6 +142,7 @@ CMakeFiles/app.dir/src/Main.cpp.o: ../src/Main.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/cassert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/assert.h \
   ../include/Window.h \
+  ../include/Property.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/ios \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__locale \
@@ -554,6 +555,8 @@ CMakeFiles/app.dir/src/Main.cpp.o: ../src/Main.cpp \
 /Library/Developer/CommandLineTools/usr/include/c++/v1/wchar.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/math.h:
+
+../include/Property.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/AvailabilityVersions.h:
 
