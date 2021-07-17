@@ -10,6 +10,7 @@ private:
     T value;
     GLFWwindow* window;
 public:
+    std::function< void(T, GLFWwindow*) > get = []( T value, GLFWwindow* window ) {};
     std::function< void(T, GLFWwindow*) > set = []( T value, GLFWwindow* window ) {};
 
     Property( T _value ):
@@ -27,10 +28,12 @@ public:
     }
 
     const T& operator()() const {
+        get( value, window );
         return value;
     }
 
     explicit operator const T& () const {
+        get( value, window );
         return value;
     }
 
