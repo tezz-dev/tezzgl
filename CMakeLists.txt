@@ -8,11 +8,9 @@ set( GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE )
 set( GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE )
 set( GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE )
 message( STATUS ${CMAKE_SOURCE_DIR})
-add_subdirectory(${CMAKE_SOURCE_DIR}/glfw)
 
 find_package( OpenGL REQUIRED )
-
-include_directories( ${CMAKE_SOURCE_DIR}/glfw/include )
+find_package( glfw3 REQUIRED )
 
 #add_library( tezzgl ${CMAKE_SOURCE_DIR}/src/tezzgl.cpp )
 #target_include_directories(tezzgl PUBLIC ${CMAKE_SOURCE_DIR}/include )
