@@ -1,7 +1,7 @@
 #ifndef TEZZGL_WINDOW_H
 #define TEZZGL_WINDOW_H
 
-#include<GLFW/glfw3.h>
+#include <GLFW/glfw3.h>
 
 #include "Point2.h"
 #include "Grid.h"
