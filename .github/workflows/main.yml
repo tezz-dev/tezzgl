@@ -12,8 +12,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Setup cmake
-      run: sudo apt-get install -y cmake
+    - name: Setup dependencies
+      run: sudo apt-get install -y cmake libxrandr-dev
         
     - name:  Generate cmake files
       run: cmake -S . -B ./build
