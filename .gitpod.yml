@@ -1,2 +1,2 @@
 tasks:
-  - init: sudo apt-get install -y cmake libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev mesa-utils libgl-dev; 
+  - init: sudo apt-get update; sudo apt-get install -y cmake libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libgl-dev libglfw3-dev; 
