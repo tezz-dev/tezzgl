@@ -1,10 +1,11 @@
 #ifndef TEZZGL_DEFINITIONS_H
 #define TEZZGL_DEFINITIONS_H
 
+#include "Point2.h"
+#include "GLFW/glfw3.h"
+
 // Aliases
 #define String          const char*
-#define width           x
-#define height          y
 #define RefreshRate     int
 
 #define ShareWindow     GLFWwindow*
