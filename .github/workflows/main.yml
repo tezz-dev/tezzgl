@@ -25,5 +25,8 @@ jobs:
       with:
         cmake-version: ${{ matrix.cmake_ver }}
         
-    - name: Build with cmake
+    - name:  Generate cmake files
       run: cmake -S . -B ./build
+      
+    - name: Build cmake 
+      run: cmake --build ./build
