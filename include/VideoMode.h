@@ -2,31 +2,33 @@
 #define TEZZGL_VIDEOMODE_H
 
 #include "BitDepth.h"
+#include "Definitions.h"
 
 class VideoMode {
+private:
+    GLFWvidmode mode;
 public:
-    Size size;
-    BitDepth bitDepth;
-    RefreshRate refreshRate;
 
-    VideoMode( GLFWvidmode mode ):
-        size(mode.x, mode.y),
-        bitDepth(mode.redBits, mode.greenBits, mode.blueBits),
-        refreshRate(mode.refreshRate) {}
-        
-    VideoMode( Size _size, BitDepth _bitDepth, RefreshRate _refreshRate ):
-        size(_size),
-        bitDepth(_bitDepth),
-        refreshRate(_refreshRate) {}
+    VideoMode( GLFWvidmode mode ): mode(mode) {}
+
+    Size size() { 
+        return {mode.width, mode.height}; 
+    }
+    BitDepth bitDepth() { 
+        return {mode.redBits, mode.greenBits, mode.blueBits}; 
+    }
+
+    RefreshRate refreshRate() { 
+        return mode.refreshRate; 
+    }
 
     void set( GLFWvidmode mode ) {
-        videoMode.size.x = mode.x;
-        videoMode.size.y = mode.y;
-        videoMode.bitDepth.red = mode.redBits;
-        videoMode.bitDepth.green = mode.greenBits;
-        videoMode.bitDepth.blue = mode.blueBits;
-        videoMode.refreshRate = mode.refreshRate;
+        this->mode = mode;
     }
-}
+
+    GLFWvidmode get() {
+        return mode;
+    }
+};
 
 #endif
