@@ -1,26 +1,26 @@
 #ifndef TEZZGL_DEFINITIONS_H
 #define TEZZGL_DEFINITIONS_H
 
-#define CreateTypeAlias(alias, type) using alias = type;
+// Aliases
+#define String          const char*
+#define width           x
+#define height          y
+#define RefreshRate     int
 
-CreateTypeAlias(    String,         ,   const char*                     );
-CreateTypeAlias(    width,          ,   x                               );
-CreateTypeAlias(    height,         ,   y                               );
-CreateTypeAlias(    RefreshRate     ,   int                             );
+#define ShareWindow     GLFWwindow*
+#define Point2f         Point2<float>
+#define Point2d         Point2<int>
+#define Offset          Point2<float>
+#define Size            Point2<int>
+#define Position        Point2<int>
 
-CreateTypeAlias(    ShareWindow     ,   GLFWwindow*                     );
-CreateTypeAlias(    Point2f         ,   Point2<float>                   );
-CreateTypeAlias(    Point2d         ,   Point2<int>                     );
-CreateTypeAlias(    Offset          ,   Point2<float>                   );
-CreateTypeAlias(    Size            ,   Point2<int>                     );
-CreateTypeAlias(    Position        ,   Point2<int>                     );
-
-CreateTypeAlias(    PMonitor        ,   Property<Monitor>               );
-CreateTypeAlias(    PShareWindow    ,   Property<ShareWindow>           );
-CreateTypeAlias(    PPoint2f        ,   Property<Point2f>               );
-CreateTypeAlias(    PPoint2d        ,   Property<Point2d>               );
-CreateTypeAlias(    POffset         ,   Property<Offset>                );
-CreateTypeAlias(    PSize           ,   Property<Size                   );
-CreateTypeAlias(    PPosition       ,   Property<Position               );
+// Properties
+#define PMonitor        Property<Monitor>
+#define PShareWindow    Property<ShareWindow>
+#define PPoint2f        Property<Point2f>
+#define PPoint2d        Property<Point2d>
+#define POffset         Property<Offset>
+#define PSize           Property<Size>
+#define PPosition       Property<Position>
 
 #endif
