@@ -12,6 +12,6 @@ public:
         green = _green;
         blue = _blue;
     }
-}
+};
 
 #endif
