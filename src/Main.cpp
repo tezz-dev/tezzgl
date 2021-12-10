@@ -1,4 +1,4 @@
-#include <TezzGL.h>
+#include "tezzgl/TezzGL.h"
 #include <iostream>
 
 int main() {
