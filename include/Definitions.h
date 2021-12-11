@@ -27,4 +27,8 @@
 #define PSize           Property<Size>
 #define PPosition       Property<Position>
 
+typedef struct {
+    Word red, blue, green;
+} Words;
+
 #endif
