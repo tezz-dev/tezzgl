@@ -16,6 +16,7 @@
 #define Position        Point2<int>
 #define ContentScale    Point2<float>
 #define UserPointer     void*
+#define Word            unsigned short
 
 // Properties
 #define PMonitor        Property<Monitor>
