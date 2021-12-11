@@ -14,6 +14,7 @@
 #define Offset          Point2<float>
 #define Size            Point2<int>
 #define Position        Point2<int>
+#define ContentScale    Point2<float>
 
 // Properties
 #define PMonitor        Property<Monitor>
