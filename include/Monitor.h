@@ -4,6 +4,7 @@
 #include "GLFW/glfw3.h"
 #include <vector>
 #include "Definitions.h"
+#include "VideoMode.h"
 
 class Monitor {
 private:
@@ -14,6 +15,12 @@ public:
     static Monitor primaryMonitor();
     Position position();
     Size physicalSize();
+    ContentScale contentScale();
+    String name();
+    UserPointer userPointer();
+    VideoMode videoMode();
+    std::vector<VideoMode> availableVideoModes();
+    
 };
 
 inline
@@ -44,6 +51,18 @@ Size Monitor::physicalSize() {
     int widthMM, heightMM;
     glfwGetMonitorPhysicalSize(monitor, &widthMM, &heightMM);
     return {widthMM, heightMM};
+}
+
+inline
+ContentScale Monitor::contentScale() {
+    float xscale, yscale;
+    glfwGetMonitorContentScale(monitor, &xscale, &yscale);
+    return {xscale, yscale};
+}
+
+inline
+String Monitor::name() {
+    return glfwGetMonitorName(monitor);
 }
 
 #endif
