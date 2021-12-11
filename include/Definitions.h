@@ -15,6 +15,7 @@
 #define Size            Point2<int>
 #define Position        Point2<int>
 #define ContentScale    Point2<float>
+#define UserPointer     void*
 
 // Properties
 #define PMonitor        Property<Monitor>
