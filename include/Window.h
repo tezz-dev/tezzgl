@@ -7,157 +7,55 @@
 #include "Grid.h"
 #include "Definitions.h"
 #include "Property.h"
+#include "Monitor.h"
+#include "WindowHint.h"
+#include "WindowAttribute.h"
 
 class Window {
 private:
-    GLFWwindow* window;
+    GLFWwindow* _window;
 
 public:
-    PSize size;
-    String title;
-    Monitor monitor;
-    ShareWindow shareWindow;
+    Window(): window(nullptr);
+    explicit Window( GLFWwindow* window ): _window(window) {}
 
-    Window( String, int, int );
-    Window( String, Size );
+    GLFWwindow* window();
 
-    // GLFWwindow* GetWindow();
-    // Size GetSize();
-    // String GetTitle();
-    // Monitor GetMonitor();
-    // ShareWindow GetShareWindow();
-    //
-    // void SetSize( Size );
-    // void SetMonitor( Monitor );
-    // void SetShareWindow( ShareWindow );
+    void defaultWindowHints();
+    void setWindowHint( WindowHint hint, int value );
+    void setWindowHintString( WindowHint hint, int value );
+    void createWindow( String title, Size size, Monitor monitor, Window shareWindow );
+    void destroy();
+    int shouldClose();
+    void setShouldClose( int value );
+    void setTitle( String title );
+    /* void setIcon( vector<Image> icons ); */
+    Position position();
+    void setPosition( Position position );
+    Size size();
+    void setSize( Size size );
+    void setSizeLimits( Size minSize, Size maxSize );
+    void setAspectRatio( AspectRatio aspectRatio );
+    Size frameBufferSize();
+//    FrameSize getFrameSize();
+    ContentScale contentScale();
+    Opacity opacity();
+    void setOpacity( Opacity opacity );
+    void iconify();
+    void restore();
+    void maximize();
+    void show();
+    void hide();
+    void focus();
+    void requestAttention();
+    Monitor monitor();
+    void setMonitor( Monitor monitor, Position position, Size size, RefreshRate refreshRate );
+    int getAttribute( WindowAttribute windowAttribute );
+    void setAttribute( WindowAttribute windowAttribute, int value );
+    void setUserPointer( UserPointer userPointer );
+    UserPointer userPointer();
 
-    void Init();
-    void StartRendering();
-    void Resize();
-    void Setup() const;
-    void EndRendering();
-
-    bool ShouldClose();
-    void SetWindowSizeLimits( Size = {-1, -1}, Size = {-1, -1} );
-
-    static void Destroy();
+    void swapBuffers();
 };
 
-Window::Window( String _title, int _width, int _height ):
-    title(_title),
-    size({_width, _height}) {
-
-    window = nullptr;
-    monitor = nullptr;
-    shareWindow = nullptr;
-    size.set = []( Size size, GLFWwindow* window ) {
-        glfwSetWindowSize(window, size.x, size.y);
-    };
-}
-
-Window::Window( String _title, Size _size ):
-    Window(_title, _size.x, _size.y) {}
-
-// GLFWwindow* Window::GetWindow() { return window; }
-// Size Window::GetSize() {
-//     glfwGetWindowSize(window, &size.x, &size.y);
-//     return size;
-// }
-// String Window::GetTitle() { return title; }
-// Monitor Window::GetMonitor() { return monitor; }
-// ShareWindow Window::GetShareWindow() { return shareWindow; }
-// void Window::SetSize( Size _size ) {
-//     size.x = _size.x;
-//     size.y = _size.y;
-//     glfwSetWindowSize(window, size.x, size.y);
-// }
-// void Window::SetMonitor( Monitor _monitor ) { monitor = _monitor; }
-// void Window::SetShareWindow( ShareWindow _shareWindow ) { shareWindow = _shareWindow; }
-void Window::Init() {
-    if( !glfwInit() )
-        return;
-
-    window = glfwCreateWindow(
-        (int)size().width,
-        (int)size().height,
-        title,
-        monitor,
-        shareWindow
-    );
-
-    size.setWindow( window );
-
-    if( !window ) {
-        glfwTerminate();
-        return;
-    }
-
-    glfwMakeContextCurrent( window );
-}
-void Window::StartRendering() {
-    glClear(GL_COLOR_BUFFER_BIT);
-}
-void Window::Resize() {
-    int _width, _height;
-    glfwGetFramebufferSize (
-            window,
-            &_width,
-            &_height
-    );
-    size->width = _width;
-    size->height = _height;
-
-    glViewport(0, 0, size->width, size->height);
-}
-void Window::Setup() const {
-    glMatrixMode( GL_PROJECTION );
-
-    glLoadIdentity();
-
-    glClear( GL_COLOR_BUFFER_BIT );
-
-    glOrtho (
-            0,
-            size().width,
-            size().height,
-            0,
-            0,
-            1
-    );
-}
-void Window::EndRendering() {
-    glfwSwapBuffers( window );
-
-    glfwPollEvents();
-}
-void Window::Destroy() {
-    glfwTerminate();
-}
-bool Window::ShouldClose() {
-    return glfwWindowShouldClose( window );
-}
-void Window::SetWindowSizeLimits( Size minSize, Size maxSize) {
-  glfwSetWindowSizeLimits(
-      window,
-      minSize.width,
-      minSize.height,
-      maxSize.width,
-      maxSize.height
-  );
-}
-
 #endif
-
-/*
-GLFW_RESIZABLE
-GLFW_VISIBLE
-GLFW_DECORATED
-GLFW_FOCUSED
-GLFW_AUTO_ICONIFY
-GLFW_FLOATING
-GLFW_MAXIMIZED
-GLFW_CENTER_CURSOR
-GLFW_TRANSPARENT_FRAMEBUFFER
-GLFW_FOCUS_ON_SHOW
-GLFW_SCALE_TO_MONITOR
-*/
