@@ -14,9 +14,11 @@
 #define Offset          Point2<float>
 #define Size            Point2<int>
 #define Position        Point2<int>
+#define AspectRatio     Point2<int>
 #define ContentScale    Point2<float>
 #define UserPointer     void*
 #define Word            unsigned short
+#define Opacity         float
 
 // Properties
 #define PMonitor        Property<Monitor>
