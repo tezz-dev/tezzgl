@@ -3,7 +3,7 @@ tasks:
       sudo docker pull registry.jetbrains.team/p/prj/containers/projector-clion
     command: |
       sudo apt-get update; sudo apt-get install -y --fix-missing cmake libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libgl-dev libglfw3-dev
-      mkdir -p .jetbrains; touch .jetbrains/.gitkeep; sudo chown -R 1000:1000 .jetbrains
+      mkdir -p .jetbrains; touch .jetbrains/.gitkeep; mkdir -p ~/projector-user; sudo chown -R 1000:1000 .jetbrains
       sudo docker run --rm -p 8887:8887 -v /workspace/template-jetbrains-clion:/home/projector-user -it registry.jetbrains.team/p/prj/containers/projector-clion
 ports:
   - port: 8887
