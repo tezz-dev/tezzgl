@@ -6,7 +6,6 @@
 #include "Point2.h"
 #include "Grid.h"
 #include "Definitions.h"
-#include "Property.h"
 #include "Monitor.h"
 #include "WindowHint.h"
 #include "WindowAttribute.h"
