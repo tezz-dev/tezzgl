@@ -15,7 +15,7 @@ private:
     GLFWwindow* _window;
 
 public:
-    Window(): window(nullptr);
+    Window(): _window(nullptr) {}
     explicit Window( GLFWwindow* window ): _window(window) {}
 
     GLFWwindow* window();
