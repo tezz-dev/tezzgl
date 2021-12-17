@@ -7,7 +7,7 @@
 
 #include "GLFW/glfw3.h"
 
-enum WindowHint {
+enum class WindowHint {
     focused = GLFW_FOCUSED,
     iconified = GLFW_ICONIFIED,
     resizable = GLFW_RESIZABLE,
