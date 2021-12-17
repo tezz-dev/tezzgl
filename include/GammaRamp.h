@@ -10,32 +10,10 @@ private:
     GLFWgammaramp* ramp;
 public:
     GammaRamp( GLFWgammaramp* ramp ): ramp(ramp) {}
-    std::vector<Word> red() {
-        if( ramp == NULL ) return {};
-        return {ramp->red, ramp->red + ramp->size};
-    }
-    std::vector<Word> green() {
-        if( ramp == NULL ) return {};
-        return {ramp->green, ramp->green + ramp->size};
-    }
-    std::vector<Word> blue() {
-        if( ramp == NULL ) return {};
-        return {ramp->blue, ramp->blue + ramp->size};
-    }
-    std::vector<Words> all() {
-        if( ramp == NULL ) return {};
-        std::vector<Words> channels;
-        for( int i=0; i<ramp->size; i++ ) {
-            channels.push_back(
-                {
-                    ramp->red[i], 
-                    ramp->green[i], 
-                    ramp->blue[i]
-                }
-            );
-        }
-        return channels;
-    }
+    std::vector<Word> red();
+    std::vector<Word> green();
+    std::vector<Word> blue();
+    std::vector<Words> all();
 };
 
 #endif
