@@ -20,9 +20,9 @@ public:
 
     GLFWwindow* window();
 
-    void defaultWindowHints();
+    void defaultWindowHints() const;
     void setWindowHint( WindowHint hint, int value );
-    void setWindowHintString( WindowHint hint, int value );
+    void setWindowHintString( WindowHint hint, String value );
     void createWindow( String title, Size size, Monitor monitor, Window shareWindow );
     void destroy();
     int shouldClose();
