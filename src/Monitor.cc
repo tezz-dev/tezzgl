@@ -16,22 +16,22 @@ Monitor Monitor::primaryMonitor() {
 
 Position Monitor::position() {
     int width, height;
-    glfwGetMonitorPos(monitor, &width, &height);
+    glfwGetMonitorPos(_monitor, &width, &height);
     return {width, height};
 }
 
 Size Monitor::physicalSize() {
     int widthMM, heightMM;
-    glfwGetMonitorPhysicalSize(monitor, &widthMM, &heightMM);
+    glfwGetMonitorPhysicalSize(_monitor, &widthMM, &heightMM);
     return {widthMM, heightMM};
 }
 
 ContentScale Monitor::contentScale() {
     float xscale, yscale;
-    glfwGetMonitorContentScale(monitor, &xscale, &yscale);
+    glfwGetMonitorContentScale(_monitor, &xscale, &yscale);
     return {xscale, yscale};
 }
 
 String Monitor::name() {
-    return glfwGetMonitorName(monitor);
+    return glfwGetMonitorName(_monitor);
 }
