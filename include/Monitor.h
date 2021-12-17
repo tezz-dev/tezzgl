@@ -8,9 +8,10 @@
 
 class Monitor {
 private:
-    GLFWmonitor* monitor;
+    GLFWmonitor* _monitor;
 public:
-    Monitor( GLFWmonitor* monitor ): monitor(monitor) {}
+    Monitor( GLFWmonitor* monitor ): _monitor(monitor) {}
+    GLFWmonitor* monitor();
     static std::vector<Monitor> monitors();    
     static Monitor primaryMonitor();
     Position position();
