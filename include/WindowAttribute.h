@@ -7,7 +7,7 @@
 
 #include "GLFW/glfw3.h"
 
-enum WindowAttribute {
+enum class WindowAttribute {
     focused = GLFW_FOCUSED,
     iconified = GLFW_ICONIFIED,
     resizable = GLFW_RESIZABLE,
