@@ -8,7 +8,7 @@ Timer::Timer( double _velocity ) {
     velocity = _velocity;
 }
 
-void Timer::CreateTask( const std::function<void()>& task ) {
+void Timer::createTask( const std::function<void()>& task ) {
     glfwSwapInterval(1);
 
     current = glfwGetTime();

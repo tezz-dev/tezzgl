@@ -14,7 +14,7 @@ private:
 
 public:
     Timer( double _velocity );
-    void CreateTask( const std::function<void()>& task );
+    void createTask( const std::function<void()>& task );
 };
 
 #endif
