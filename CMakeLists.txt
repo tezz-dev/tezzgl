@@ -27,4 +27,5 @@ target_include_directories(tezzgl PUBLIC ${CMAKE_SOURCE_DIR}/include /usr/local/
 add_executable( tezzgl_tests ${TEST_SOURCES} )
 target_include_directories( tezzgl_tests PUBLIC ${CMAKE_SOURCE_DIR}/include )
 
-target_link_libraries( tezzgl_tests glfw OpenGL::GL tezzgl )
+target_link_libraries( tezzgl glfw OpenGL::GL )
+target_link_libraries( tezzgl_tests tezzgl )
