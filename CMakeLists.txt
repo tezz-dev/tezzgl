@@ -1,23 +1,30 @@
-cmake_minimum_required( VERSION 3.13 )
+cmake_minimum_required( VERSION 3.1 )
 project( TezzGL )
 
 set( GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE )
 set( GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE )
 set( GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE )
 
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 find_package( OpenGL REQUIRED )
 find_package( glfw3 REQUIRED )
 
+file(GLOB LIB_SOURCES include/tezzgl/*.hpp src/*.cpp)
+file(GLOB TEST_SOURCES tests/*.cpp)
+
 add_library( 
     tezzgl 
-    ${CMAKE_SOURCE_DIR}/src/Artist.cc 
-    ${CMAKE_SOURCE_DIR}/src/GammaRamp.cc 
-    ${CMAKE_SOURCE_DIR}/src/Monitor.cc 
-    ${CMAKE_SOURCE_DIR}/src/Timer.cc 
-    ${CMAKE_SOURCE_DIR}/src/Window.cc 
+    ${LIB_SOURCES}
 )
-target_include_directories(tezzgl PUBLIC ${CMAKE_SOURCE_DIR}/include )
-add_executable( app ${CMAKE_SOURCE_DIR}/test/Main.cpp )
-target_include_directories( app PUBLIC ${CMAKE_SOURCE_DIR}/include )
 
-target_link_libraries( app glfw OpenGL::GL )
+install(TARGETS tezzgl DESTINATION lib)
+install(DIRECTORY include/tezzgl DESTINATION include)
+
+target_include_directories(tezzgl PUBLIC ${CMAKE_SOURCE_DIR}/include /usr/local/include )
+add_executable( tezzgl_tests ${TEST_SOURCES} )
+target_include_directories( tezzgl_tests PUBLIC ${CMAKE_SOURCE_DIR}/include )
+
+target_link_libraries( tezzgl_tests glfw OpenGL::GL tezzgl )

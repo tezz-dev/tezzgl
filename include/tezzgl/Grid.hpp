@@ -1,7 +1,7 @@
 #ifndef TEZZGL_GRID_H
 #define TEZZGL_GRID_H
 
-#include "Point2.h"
+#include "Point2.hpp"
 
 class Grid {
 public:

@@ -3,12 +3,11 @@
 
 #include <GLFW/glfw3.h>
 
-#include "Point2.h"
-#include "Grid.h"
-#include "Definitions.h"
-#include "Monitor.h"
-#include "WindowHint.h"
-#include "WindowAttribute.h"
+#include "Point2.hpp"
+#include "Definitions.hpp"
+#include "Monitor.hpp"
+#include "WindowHint.hpp"
+#include "WindowAttribute.hpp"
 
 class Window {
 private:
@@ -16,7 +15,7 @@ private:
 
 public:
     Window(): _window(nullptr) {}
-    explicit Window( GLFWwindow* window ): _window(window) {}
+    Window( GLFWwindow* window ): _window(window) {}
 
     GLFWwindow* window();
 
@@ -53,8 +52,6 @@ public:
     void setAttribute( WindowAttribute windowAttribute, int value );
     void setUserPointer( UserPointer userPointer );
     UserPointer userPointer();
-
-    void swapBuffers();
 };
 
 #endif

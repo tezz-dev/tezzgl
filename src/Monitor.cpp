@@ -1,4 +1,8 @@
-#include "Monitor.h"
+#include "tezzgl/Monitor.hpp"
+
+GLFWmonitor* Monitor::monitor() {
+    return _monitor;
+}
 
 std::vector<Monitor> Monitor::monitors() {
     int numberOfMonitors;

@@ -1,4 +1,4 @@
-#include "GammaRamp.h"
+#include "tezzgl/GammaRamp.hpp"
 
 std::vector<Word> GammaRamp::red() {
         if( ramp == NULL ) return {};

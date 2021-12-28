@@ -1,8 +1,8 @@
 #ifndef TEZZGL_VIDEOMODE_H
 #define TEZZGL_VIDEOMODE_H
 
-#include "BitDepth.h"
-#include "Definitions.h"
+#include "BitDepth.hpp"
+#include "Definitions.hpp"
 
 class VideoMode {
 private:

@@ -1,7 +1,7 @@
 #ifndef TEZZGL_DEFINITIONS_H
 #define TEZZGL_DEFINITIONS_H
 
-#include "Point2.h"
+#include "Point2.hpp"
 #include "GLFW/glfw3.h"
 
 // Aliases

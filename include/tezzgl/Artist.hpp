@@ -1,11 +1,11 @@
 #ifndef TEZZGL_ARTIST_H
 #define TEZZGL_ARTIST_H
 
-#include <GLFW/glfw3.h>
+#include "GLFW/glfw3.h"
 
-#include "Point2.h"
-#include "Grid.h"
-#include "Definitions.h"
+#include "Point2.hpp"
+#include "Grid.hpp"
+#include "Definitions.hpp"
 
 class Artist {
 public:

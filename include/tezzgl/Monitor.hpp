@@ -3,8 +3,8 @@
 
 #include "GLFW/glfw3.h"
 #include <vector>
-#include "Definitions.h"
-#include "VideoMode.h"
+#include "Definitions.hpp"
+#include "VideoMode.hpp"
 
 class Monitor {
 private:

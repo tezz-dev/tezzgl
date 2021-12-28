@@ -1,8 +1,4 @@
-//
-// Created by tezz-io on 12/12/21.
-//
-
-#include "Artist.h"
+#include "tezzgl/Artist.hpp"
 
 void Artist::useColor( float red, float green, float blue ) {
     glColor3f( red, green, blue );

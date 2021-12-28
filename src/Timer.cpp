@@ -1,4 +1,4 @@
-#include "Timer.h"
+#include "tezzgl/Timer.hpp"
 
 Timer::Timer( double _velocity ) {
     previous = glfwGetTime();

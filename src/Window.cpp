@@ -2,8 +2,8 @@
 // Created by tezz-io on 12/12/21.
 //
 
-#include "Window.h"
-#include "WindowAttribute.h"
+#include "tezzgl/Window.hpp"
+#include "tezzgl/WindowAttribute.hpp"
 #include <GLFW/glfw3.h>
 
 GLFWwindow* Window::window() { 

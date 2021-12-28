@@ -2,7 +2,7 @@
 #define TEZZGL_GAMMARAMP_H
 
 #include "GLFW/glfw3.h"
-#include "Definitions.h"
+#include "Definitions.hpp"
 #include <vector>
 
 class GammaRamp {
