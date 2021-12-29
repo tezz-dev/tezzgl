@@ -4,23 +4,10 @@ cmake_minimum_required( VERSION 3.1 )
 ###################### PROJECT #######################
 project( TezzGL )
 
-##################### SETUP GLFW ##################### 
-
-set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-
-if(WIN32)
-    include("FetchContent")
-    FetchContent_Declare(glfw
-        GIT_REPOSITORY "https://github.com/glfw/glfw"
-        GIT_TAG "3.3.2"
-        GIT_SHALLOW ON
-    )
-    # Now make the glfw target available to link against
-    FetchContent_MakeAvailable(glfw)
-    message(STATUS "${Green} GLFW Should Be Downloaded ${ColourReset}")
-endif()
+##################### GLFW FLAGS ##################### 
+set( GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE )
+set( GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE )
+set( GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE )
 
 ###################### C++ FLAGS #####################
 set(CMAKE_CXX_STANDARD 14)
@@ -29,9 +16,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 ############## DEPENDENCIES FOR TEZZGL ###############
 find_package( OpenGL REQUIRED )
-if(NOT WIN32)
-    find_package( glfw3 REQUIRED )
-endif()
+find_package( glfw3 REQUIRED )
 
 ############### SOURCE FILES FOR TEZZGL ##############
 file(GLOB LIB_SOURCES include/tezzgl/*.hpp src/*.cpp)
@@ -53,7 +38,6 @@ target_include_directories(
 target_link_libraries( tezzgl glfw OpenGL::GL )
 
 ######## SETUP GOOGLETEST LIBRARY FOR TESTING ########
-set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
 include(FetchContent)
 FetchContent_Declare(
     googletest
@@ -90,8 +74,27 @@ target_link_libraries(
 
 ################ ADD TESTS TO GTEST ##################
 include(GoogleTest)
-gtest_discover_tests(
-    tezzgl_tests
-    PROPERTIES
-        LABELS "unit"
-)
+gtest_discover_tests(tezzgl_tests)
+
+############ COVERAGE FOR TEZZGL_TESTS ###############
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+if (CMAKE_COMPILER_IS_GNUCXX)
+    include(CodeCoverage)
+    append_coverage_compiler_flags()
+
+    # we need to turn off optimization for non-skewed coverage reports
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -O0")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0")
+
+    # optional excludes - None needed here
+    #    set(COVERAGE_EXCLUDES)
+
+    # importantly, set the path to the gcovr executable that you downladed
+    set(GCOVR_PATH "/usr/bin/gcovr")
+    # Works
+    setup_target_for_coverage_gcovr_html(
+            NAME TestDoMathCoverageHtml
+            EXECUTABLE TestDoMath
+            DEPENDENCIES TestDoMath DoMath
+    )
+endif()
