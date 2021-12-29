@@ -1,22 +1,47 @@
+name: Testing
+
 on:
   push:
   pull_request:
 
 jobs:
-  run-tests:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      packages: write
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    defaults:
+      run:
+        shell: bash -l {0}
 
-    - name: Setup dependencies
-      run: sudo apt-get update; sudo apt-get install -y --fix-missing cmake libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libgl-dev libglfw3-dev
-        
-    - name:  Generate cmake files
-      run: cmake -S . -B ./build
-      
-    - name: Build cmake 
-      run: cmake --build ./build
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Configure
+      run: |
+        cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Debug
+
+    - name: Build
+      run: |
+        cmake --build build --config Debug
+
+    - name: Test
+      run: |
+        cd build
+        ctest -C Debug --output-on-failure --verbose
+
+    - name: Setup python
+      uses: actions/setup-python@v2
+      if: contains(matrix.os, 'ubuntu')
+      with:
+        python-version: 3.8
+
+    - name: Upload code coverage to coveralls
+      if: contains(matrix.os, 'ubuntu')
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install --upgrade pip setuptools cpp-coveralls
+        coveralls -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*" --exclude "venv" --exclude "build/_deps"
