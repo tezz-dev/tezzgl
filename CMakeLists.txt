@@ -80,7 +80,7 @@ target_link_libraries(
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 if (CMAKE_COMPILER_IS_GNUCXX)
     include(CodeCoverage)
-    append_coverage_compiler_flags()
+    #append_coverage_compiler_flags()
 
     # we need to turn off optimization for non-skewed coverage reports
     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -O0")
