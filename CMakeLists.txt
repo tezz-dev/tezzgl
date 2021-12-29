@@ -31,7 +31,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 ############## DEPENDENCIES FOR TEZZGL ###############
 find_package( OpenGL REQUIRED )
-if(!WIN32)
+if(NOT WIN32)
     find_package( glfw3 REQUIRED )
 endif()
 
