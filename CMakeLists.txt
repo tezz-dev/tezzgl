@@ -38,13 +38,13 @@ target_include_directories(
 target_link_libraries( tezzgl glfw OpenGL::GL )
 
 ######## SETUP GOOGLETEST LIBRARY FOR TESTING ########
-include(FetchContent)
-FetchContent_Declare(
-    googletestlib
-    URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
-)
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletestlib)
+#include(FetchContent)
+#FetchContent_Declare(
+#    googletestlib
+#    URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+#)
+#set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+#FetchContent_MakeAvailable(googletestlib)
 
 ######## SETUP TEZZGL AS A LIBRARY FOR TESTING #######
 install(TARGETS tezzgl DESTINATION lib)
@@ -53,7 +53,7 @@ install(TARGETS tezzgl DESTINATION lib)
 install(DIRECTORY include/tezzgl DESTINATION include)
 
 ################### ENABLE TESTING ###################
-enable_testing()
+#enable_testing()
 
 ########## CREATE AN EXECUTABLE FOR TESTING ########## 
 add_executable( tezzgl_tests ${TEST_SOURCES} )
@@ -69,12 +69,12 @@ target_include_directories(
 target_link_libraries( 
     tezzgl_tests 
     tezzgl 
-    gtest_main 
+#    gtest_main 
 )
 
 ################ ADD TESTS TO GTEST ##################
-include(GoogleTest)
-gtest_discover_tests(tezzgl_tests)
+#include(GoogleTest)
+#gtest_discover_tests(tezzgl_tests)
 
 ############ COVERAGE FOR TEZZGL_TESTS ###############
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
