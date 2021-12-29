@@ -44,6 +44,7 @@ FetchContent_Declare(
     URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
 )
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletestlib)
 
 ######## SETUP TEZZGL AS A LIBRARY FOR TESTING #######
@@ -60,7 +61,7 @@ add_executable( tezzgl_tests ${TEST_SOURCES} )
 
 ################ ADD TESTS TO GTEST ##################
 include(GoogleTest)
-gtest_discover_tests(tezzgl_tests)
+gtest_discover_tests(tezzgl_tests PROPERTIES LABELS "unit")
 
 ################### INCLUDE TEZZGL ###################
 target_include_directories( 
@@ -76,11 +77,5 @@ target_link_libraries(
     gtest_main 
 )
 
-if(LINUX)
-    ############ COVERAGE FOR TEZZGL_TESTS ###############
-    include( cmake/CodeCoverage.cmake )
-    SET(CMAKE_CXX_FLAGS "-g -O0 --coverage -fprofile-arcs -ftest-coverage")
-    SET(CMAKE_C_FLAGS "-g -O0 --coverage -fprofile-arcs -ftest-coverage")
-    
-    setup_target_for_coverage(tezzgl_coverage tezzgl_tests tezzgl_coverage_tests)
-endif()
+target_compile_options(tezzgl_tests PUBLIC "--coverage")
+target_link_options(tezzgl_tests INTERFACE "--coverage")
