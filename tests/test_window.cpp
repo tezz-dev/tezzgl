@@ -60,8 +60,8 @@ TEST(TestWindow, WindowAttribute) {
     window.createWindow("Hello", {600,600}, {nullptr}, {nullptr});
     Context::makeCurrent(window);
     
-    window.setAttribute(WindowAttribute::focused, true);
-    ASSERT_EQ(window.getAttribute(WindowAttribute::focused), true);
+    window.setAttribute(WindowAttribute::visible, true);
+    ASSERT_EQ(window.getAttribute(WindowAttribute::visible), true);
     
     window.setShouldClose(true);
     window.destroy();
