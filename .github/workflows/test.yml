@@ -43,9 +43,11 @@ jobs:
         cmake --build ./build 
 
     - name: Test
-      run: |
-        cd build
-        ctest --verbose
+      uses: GabrielBB/xvfb-action@v1
+      with:
+        run: |
+          cd build
+          ctest --verbose
 
     - name: Setup python
       uses: actions/setup-python@v2
