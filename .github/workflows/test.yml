@@ -42,14 +42,12 @@ jobs:
       run: |
         cmake --build ./build 
         
-    - name: Setup OpenGL for linux
-      if: contains(matrix.os, 'ubuntu')
-      uses: openrndr/setup-opengl@v1.1
-      
-    - name: Test
-      run: |
-        cd build
-        ctest --verbose
+    - name: Setup xvfb andx test
+      uses: GabrielBB/xvfb-action@v1
+      with:
+       run: |
+         cd build
+         ctest --verbose
 
     - name: Setup python
       uses: actions/setup-python@v2
