@@ -42,13 +42,12 @@ jobs:
       run: |
         cmake --build ./build 
         
-    - name: Setup xvfb
+    - name: Setup xvfb andx test
       uses: GabrielBB/xvfb-action@v1
-      
-    - name: Test
-      run: |
-        cd build
-        ctest --verbose
+      with:
+        run: |
+          cd build
+          ctest --verbose
 
     - name: Setup python
       uses: actions/setup-python@v2
