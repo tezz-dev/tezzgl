@@ -12,6 +12,6 @@ void Context::swapInterval( int interval ) {
     glfwSwapInterval(interval);
 }
 
-int Context::extensionSupported( String extension ) {
+int Context::extensionSupported( StringConstant extension ) {
     return extensionSupported(extension);
 }

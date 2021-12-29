@@ -18,11 +18,11 @@ void Window::setWindowHint( WindowHint hint, int value ) {
     glfwWindowHint((int)hint, value);
 }
 
-void Window::setWindowHintString( WindowHint hint, String value ) {
+void Window::setWindowHintString( WindowHint hint, StringConstant value ) {
     glfwWindowHintString((int)hint, value);
 }
 
-void Window::createWindow( String title, Size size, Monitor monitor, Window shareWindow ) {
+void Window::createWindow( StringConstant title, Size size, Monitor monitor, Window shareWindow ) {
     _window = glfwCreateWindow(size.x, size.y, title, monitor.monitor(), shareWindow.window());
 }
 
@@ -38,7 +38,7 @@ void Window::setShouldClose( int value ) {
     glfwSetWindowShouldClose(_window, value);
 }
 
-void Window::setTitle( String title ) {
+void Window::setTitle( StringConstant title ) {
     glfwSetWindowTitle(_window, title);
 }
 

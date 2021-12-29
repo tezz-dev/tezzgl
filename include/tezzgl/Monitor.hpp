@@ -17,7 +17,7 @@ public:
     Position position();
     Size physicalSize();
     ContentScale contentScale();
-    String name();
+    StringConstant name();
     UserPointer userPointer();
     VideoMode videoMode();
     std::vector<VideoMode> availableVideoModes();

@@ -5,7 +5,7 @@
 #include "GLFW/glfw3.h"
 
 // Aliases
-#define String          const char*
+#define StringConstant  const char*
 #define RefreshRate     int
 
 #define ShareWindow     GLFWwindow*

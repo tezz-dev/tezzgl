@@ -36,6 +36,6 @@ ContentScale Monitor::contentScale() {
     return {xscale, yscale};
 }
 
-String Monitor::name() {
+StringConstant Monitor::name() {
     return glfwGetMonitorName(_monitor);
 }

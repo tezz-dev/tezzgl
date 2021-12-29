@@ -8,8 +8,8 @@ public:
     static void makeCurrent( Window window );
     static Window current();
     static void swapInterval( int interval );
-    static int extensionSupported( String extension );
-    /* GLFWglproc getProcAddress( String procname ) */
+    static int extensionSupported( StringConstant extension );
+    /* GLFWglproc getProcAddress( StringConstant procname ) */
 };
 
 #endif

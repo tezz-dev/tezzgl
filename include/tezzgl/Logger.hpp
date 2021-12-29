@@ -13,7 +13,7 @@
 
 class Logger {
 public:
-    static void log(String message) {
+    static void log(StringConstant message) {
         std::cout << message << "\n";
     }
 };

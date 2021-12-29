@@ -21,12 +21,12 @@ public:
 
     void defaultWindowHints() const;
     void setWindowHint( WindowHint hint, int value );
-    void setWindowHintString( WindowHint hint, String value );
-    void createWindow( String title, Size size, Monitor monitor, Window shareWindow );
+    void setWindowHintString( WindowHint hint, StringConstant value );
+    void createWindow( StringConstant title, Size size, Monitor monitor, Window shareWindow );
     void destroy();
     int shouldClose();
     void setShouldClose( int value );
-    void setTitle( String title );
+    void setTitle( StringConstant title );
     /* void setIcon( vector<Image> icons ); */
     Position position();
     void setPosition( Position position );
