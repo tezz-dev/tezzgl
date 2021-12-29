@@ -53,6 +53,7 @@ target_include_directories(
 target_link_libraries( tezzgl glfw OpenGL::GL )
 
 ######## SETUP GOOGLETEST LIBRARY FOR TESTING ########
+set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
 include(FetchContent)
 FetchContent_Declare(
     googletest
@@ -89,4 +90,8 @@ target_link_libraries(
 
 ################ ADD TESTS TO GTEST ##################
 include(GoogleTest)
-gtest_discover_tests(tezzgl_tests)
+gtest_discover_tests(
+    tezzgl_tests
+    PROPERTIES
+        LABELS "unit"
+)
