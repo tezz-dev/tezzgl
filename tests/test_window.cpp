@@ -89,8 +89,8 @@ TEST(TestWindow, WindowOpacity) {
     window.createWindow("Hello", {600,600}, {nullptr}, {nullptr});
     Context::makeCurrent(window);
     
-    window.setOpacity(0.5);
-    ASSERT_EQ(window.opacity(), 0.5);
+    window.setOpacity(1.0);
+    ASSERT_EQ(window.opacity(), 1.0);
     
     window.setShouldClose(true);
     window.destroy();
