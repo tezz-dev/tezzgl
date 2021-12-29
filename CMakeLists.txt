@@ -40,11 +40,11 @@ target_link_libraries( tezzgl glfw OpenGL::GL )
 ######## SETUP GOOGLETEST LIBRARY FOR TESTING ########
 include(FetchContent)
 FetchContent_Declare(
-    googletest
+    googletestlib
     URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
 )
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
+FetchContent_MakeAvailable(googletestlib)
 
 ######## SETUP TEZZGL AS A LIBRARY FOR TESTING #######
 install(TARGETS tezzgl DESTINATION lib)
