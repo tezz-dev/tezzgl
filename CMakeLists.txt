@@ -77,6 +77,8 @@ target_link_libraries(
 find_program(GCOV_PATH gcov)
 target_compile_options(tezzgl_tests PUBLIC "--coverage")
 target_link_options(tezzgl_tests INTERFACE "--coverage")
+set(CMAKE_CXX_FLAGS "-g -O0 --coverage -fprofile-arcs -ftest-coverage")
+set(CMAKE_C_FLAGS "-g -O0 --coverage -fprofile-arcs -ftest-coverage")
 
 ################ ADD TESTS TO GTEST ##################
 include(GoogleTest)
