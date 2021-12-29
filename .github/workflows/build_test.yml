@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  build_test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -36,17 +36,17 @@ jobs:
     
     - name: Configure
       run: |
-        cmake -S . -B ./build
+        cmake -S . -B ./build -DCMAKE_BUILD_TYPE=Debug
 
     - name: Build
       run: |
-        cmake --build ./build 
+        cmake --build ./build --config Debug
         
     - name: Setup xvfb and test for linux
       if: contains(matrix.os, 'ubuntu')
       uses: GabrielBB/xvfb-action@v1
       with:
-       run: ctest --verbose
+       run: ctest -C Debug --output-on-failure --verbose
        working-directory: ./build
 
     - name: Setup python
