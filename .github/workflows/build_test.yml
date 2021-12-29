@@ -7,32 +7,13 @@ on:
 jobs:
   build_test:
     runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-    defaults:
-      run:
-        shell: bash -l {0}
 
     steps:
     - uses: actions/checkout@v2
-    - name: Install Dependencies for Ubuntu
-      if: contains(matrix.os, 'ubuntu')
+    - name: Install Dependencies 
       run: |
         sudo apt-get update 
         sudo apt-get install -y --fix-missing cmake libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libgl-dev libglfw3-dev lcov
-    
-    - name: Install Dependencies for Windows
-      if: contains(matrix.os, 'windows')
-      run: |
-        choco install cmake
-        choco install glfw3
-        
-    - name: Install Dependencies for MacOS
-      if: contains(matrix.os, 'macos')
-      run: |
-        brew install cmake
-        brew install glfw
     
     - name: Configure
       run: |
@@ -43,7 +24,6 @@ jobs:
         cmake --build ./build --config Debug
         
     - name: Setup xvfb and test for linux
-      if: contains(matrix.os, 'ubuntu')
       uses: GabrielBB/xvfb-action@v1
       with:
        run: ctest -C Debug --output-on-failure --verbose
@@ -51,12 +31,10 @@ jobs:
 
     - name: Setup python
       uses: actions/setup-python@v2
-      if: contains(matrix.os, 'ubuntu')
       with:
         python-version: 3.8
 
     - name: Upload code coverage to coveralls
-      if: contains(matrix.os, 'ubuntu')
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
       run: |
