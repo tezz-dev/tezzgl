@@ -12,7 +12,7 @@ public:
         return x == point.x && y == point.y;
     }
     bool operator!=( const Point2<T>& point ) const {
-        return x == point.x || y == point.y;
+        return x != point.x || y != point.y;
     }
     Point2<T> operator+( const Point2<T>& point ) const {
         return {point.x+x, point.y+y};
