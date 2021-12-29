@@ -5,22 +5,24 @@ cmake_minimum_required( VERSION 3.1 )
 project( TezzGL )
 
 ##################### SETUP GLFW ##################### 
-include("FetchContent")
-FetchContent_Declare(
-  glfw
-  GIT_REPOSITORY https://github.com/glfw/glfw.git
-  GIT_TAG        3.2.1
-)
+if(WIN32)
+    include("FetchContent")
+    FetchContent_Declare(
+      glfw
+      GIT_REPOSITORY https://github.com/glfw/glfw.git
+      GIT_TAG        3.2.1
+    )
 
-FetchContent_GetProperties(glfw)
-if(NOT glfw_POPULATED)
-	FetchContent_Populate(glfw)
-	set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-	set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-	set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-	add_subdirectory(${glfw_SOURCE_DIR} ${glfw_BINARY_DIR})
+    FetchContent_GetProperties(glfw)
+    if(NOT glfw_POPULATED)
+        FetchContent_Populate(glfw)
+        set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+        set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+        set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+        add_subdirectory(${glfw_SOURCE_DIR} ${glfw_BINARY_DIR})
+    endif()
+    message(STATUS "${Green} GLFW Should Be Downloaded ${ColourReset}")
 endif()
-message(STATUS "${Green} GLFW Should Be Downloaded ${ColourReset}")
 
 ###################### C++ FLAGS #####################
 set(CMAKE_CXX_STANDARD 14)
@@ -29,6 +31,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 ############## DEPENDENCIES FOR TEZZGL ###############
 find_package( OpenGL REQUIRED )
+if(!WIN32)
+    find_package( glfw3 REQUIRED )
+endif()
 
 ############### SOURCE FILES FOR TEZZGL ##############
 file(GLOB LIB_SOURCES include/tezzgl/*.hpp src/*.cpp)
