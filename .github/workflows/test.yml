@@ -48,10 +48,6 @@ jobs:
       with:
        run: ctest --verbose
        working-directory: ./build
-       
-    - name: Test for windows and mac
-      if: "!contains(matrix.os, 'ubuntu')"
-      run: cd build; ctest --verbose
 
     - name: Setup python
       uses: actions/setup-python@v2
