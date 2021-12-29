@@ -59,10 +59,6 @@ enable_testing()
 ########## CREATE AN EXECUTABLE FOR TESTING ########## 
 add_executable( tezzgl_tests ${TEST_SOURCES} )
 
-################ ADD TESTS TO GTEST ##################
-include(GoogleTest)
-gtest_discover_tests(tezzgl_tests PROPERTIES LABELS "unit")
-
 ################### INCLUDE TEZZGL ###################
 target_include_directories( 
     tezzgl_tests 
@@ -77,5 +73,11 @@ target_link_libraries(
     gtest_main 
 )
 
+################## CODE COVERAGE #####################
+find_program(GCOV_PATH gcov)
 target_compile_options(tezzgl_tests PUBLIC "--coverage")
 target_link_options(tezzgl_tests INTERFACE "--coverage")
+
+################ ADD TESTS TO GTEST ##################
+include(GoogleTest)
+gtest_discover_tests(tezzgl_tests PROPERTIES LABELS "unit")
