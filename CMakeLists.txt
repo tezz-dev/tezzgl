@@ -5,6 +5,7 @@ cmake_minimum_required( VERSION 3.1 )
 project( TezzGL )
 
 ##################### SETUP GLFW ##################### 
+include("FetchContent")
 FetchContent_Declare(
   glfw
   GIT_REPOSITORY https://github.com/glfw/glfw.git
