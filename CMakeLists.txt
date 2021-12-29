@@ -37,48 +37,52 @@ target_include_directories(
 ########## LINK GLFW AND OPENGL FOR TEZZGL ###########
 target_link_libraries( tezzgl glfw OpenGL::GL )
 
-######## SETUP GOOGLETEST LIBRARY FOR TESTING ########
-include(FetchContent)
-FetchContent_Declare(
-    googletestlib
-    URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
-)
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletestlib)
+########## TESTING ONLY ON LINUX SYSTEMS #############
 
-######## SETUP TEZZGL AS A LIBRARY FOR TESTING #######
-install(TARGETS tezzgl DESTINATION lib)
+if(LINUX)
+    ######## SETUP GOOGLETEST LIBRARY FOR TESTING ########
+    include(FetchContent)
+    FetchContent_Declare(
+        googletestlib
+        URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+    )
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(googletestlib)
 
-########### INCLUDE THE HEADERS OF TEZZGL ############
-install(DIRECTORY include/tezzgl DESTINATION include)
+    ######## SETUP TEZZGL AS A LIBRARY FOR TESTING #######
+    install(TARGETS tezzgl DESTINATION lib)
 
-################### ENABLE TESTING ###################
-enable_testing()
+    ########### INCLUDE THE HEADERS OF TEZZGL ############
+    install(DIRECTORY include/tezzgl DESTINATION include)
 
-############ COVERAGE FOR TEZZGL_TESTS ###############
-include( cmake/CodeCoverage.cmake )
-SET(CMAKE_CXX_FLAGS "-g -O0 --coverage -fprofile-arcs -ftest-coverage")
-SET(CMAKE_C_FLAGS "-g -O0 --coverage -fprofile-arcs -ftest-coverage")
+    ################### ENABLE TESTING ###################
+    enable_testing()
 
-########## CREATE AN EXECUTABLE FOR TESTING ########## 
-add_executable( tezzgl_tests ${TEST_SOURCES} )
+    ############ COVERAGE FOR TEZZGL_TESTS ###############
+    include( cmake/CodeCoverage.cmake )
+    SET(CMAKE_CXX_FLAGS "-g -O0 --coverage -fprofile-arcs -ftest-coverage")
+    SET(CMAKE_C_FLAGS "-g -O0 --coverage -fprofile-arcs -ftest-coverage")
 
-################### INCLUDE TEZZGL ###################
-target_include_directories( 
-    tezzgl_tests 
-    PUBLIC 
-    ${CMAKE_SOURCE_DIR}/include 
-)
+    ########## CREATE AN EXECUTABLE FOR TESTING ########## 
+    add_executable( tezzgl_tests ${TEST_SOURCES} )
 
-############# LINK TEZZGL AND GOOGLETEST #############
-target_link_libraries( 
-    tezzgl_tests 
-    tezzgl 
-    gtest_main 
-)
+    ################### INCLUDE TEZZGL ###################
+    target_include_directories( 
+        tezzgl_tests 
+        PUBLIC 
+        ${CMAKE_SOURCE_DIR}/include 
+    )
 
-################ ADD TESTS TO GTEST ##################
-include(GoogleTest)
-gtest_discover_tests(tezzgl_tests)
+    ############# LINK TEZZGL AND GOOGLETEST #############
+    target_link_libraries( 
+        tezzgl_tests 
+        tezzgl 
+        gtest_main 
+    )
 
-setup_target_for_coverage(tezzgl_coverage tezzgl_tests tezzgl_coverage_tests)
+    ################ ADD TESTS TO GTEST ##################
+    include(GoogleTest)
+    gtest_discover_tests(tezzgl_tests)
+
+    setup_target_for_coverage(tezzgl_coverage tezzgl_tests tezzgl_coverage_tests)
+endif()
