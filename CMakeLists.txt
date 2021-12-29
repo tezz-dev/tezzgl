@@ -5,22 +5,20 @@ cmake_minimum_required( VERSION 3.1 )
 project( TezzGL )
 
 ##################### SETUP GLFW ##################### 
+
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+
 if(WIN32)
     include("FetchContent")
-    FetchContent_Declare(
-      glfw
-      GIT_REPOSITORY https://github.com/glfw/glfw.git
-      GIT_TAG        3.2.1
+    FetchContent_Declare(glfw
+        GIT_REPOSITORY "https://github.com/glfw/glfw"
+        GIT_TAG "3.3.2"
+        GIT_SHALLOW ON
     )
-
-    FetchContent_GetProperties(glfw)
-    if(NOT glfw_POPULATED)
-        FetchContent_Populate(glfw)
-        set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-        set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-        set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-        add_subdirectory(${glfw_SOURCE_DIR} ${glfw_BINARY_DIR})
-    endif()
+    # Now make the glfw target available to link against
+    FetchContent_MakeAvailable(glfw)
     message(STATUS "${Green} GLFW Should Be Downloaded ${ColourReset}")
 endif()
 
