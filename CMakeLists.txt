@@ -2,7 +2,7 @@
 cmake_minimum_required( VERSION 3.1 )
 
 ###################### PROJECT #######################
-project( TezzGL )
+project( tezzgl )
 
 ##################### GLFW FLAGS ##################### 
 set( GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE )
