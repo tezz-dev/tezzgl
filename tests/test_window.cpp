@@ -1,7 +1,7 @@
 #include "tezzgl/tezzgl.hpp"
 #include "gtest/gtest.h"
 
-TEST(TestMain, BasicWorking) {
+TEST(TestMain, WindowProperties) {
     App::init();
     Window window;
     window.createWindow("Hello", {600,600}, {nullptr}, {nullptr});
